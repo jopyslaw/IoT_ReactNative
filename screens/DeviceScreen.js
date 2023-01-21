@@ -47,6 +47,7 @@ const DeviceScreen = () => {
               place={device.place}
               added={false}
               orientation={orientation}
+              id={index}
             />
           ))}
           <OneDeviceSquare added={true} orientation={orientation} />

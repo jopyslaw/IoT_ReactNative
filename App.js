@@ -13,6 +13,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import DeviceScreen from './screens/DeviceScreen';
 import ModalScreen from './screens/ModalScreen';
+import ConnectScreen from './screens/ConnectScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator initialRouteName="Devices">
         <Tab.Screen name="Devices" component={DeviceScreen} />
-        <Tab.Screen name="Connection" component={DeviceScreen} />
+        <Tab.Screen name="Connection" component={ConnectScreen} />
         <Tab.Screen
           name="Modal"
           component={ModalScreen}
