@@ -4,6 +4,7 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 import Orientation, {OrientationType} from 'react-native-orientation-locker';
 import {BleManager} from 'react-native-ble-plx';
+import {Buffer} from 'buffer';
 
 const manager = new BleManager();
 
@@ -31,13 +32,14 @@ const OneDeviceSquare = props => {
     const deviceData = await AsyncStorage.getItem('@deviceBlu');
     const parsedData = JSON.parse(deviceData);
     if (parsedData) {
-      console.log('data is send');
+      console.log(parsedData);
+
       manager
         .writeCharacteristicWithResponseForDevice(
           parsedData.id,
-          parsedData.serviceUUIDs,
+          parsedData.serviceUUID,
           parsedData.characteristicUUID,
-          Buffer.from(props.command, 'base64'),
+          Buffer.from(props.command).toString('base64'),
         )
         .then(response => console.log(response))
         .catch(error => console.log(error));

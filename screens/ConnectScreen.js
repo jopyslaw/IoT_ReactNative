@@ -28,7 +28,7 @@ const ConnectScreen = () => {
         console.log(error);
         return;
       }
-      if (device.name === 'MLT-BT05') {
+      if (device.name === 'GR_5') {
         manager.stopDeviceScan();
       }
     });
@@ -41,7 +41,7 @@ const ConnectScreen = () => {
         console.log(error);
         return;
       }
-      if (device.name === 'TY') {
+      if (device.name === 'GR_5') {
         setDevices(devices);
         manager.stopDeviceScan();
         device
@@ -52,14 +52,14 @@ const ConnectScreen = () => {
           .then(ch => {
             setCharacteristic({
               id: ch.id,
-              serviceUUID: ch.serviceUUIDs,
-              characteristicUUID: ch.name,
+              serviceUUID: 'FFE0',
+              characteristicUUID: 'FFE1',
             });
             console.log(ch);
             saveData({
               id: ch.id,
-              serviceUUID: ch.serviceUUIDs,
-              characteristicUUID: ch.name,
+              serviceUUID: 'FFE0',
+              characteristicUUID: 'FFE1',
             });
           })
           .catch(e => console.log(e));
